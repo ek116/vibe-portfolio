@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2024 여름 신상품 컬렉션</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff8f0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #ff6b6b 0%, #feca57 100%);
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        header p {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+        }
+
+        .promo-banner {
+            background: linear-gradient(90deg, #ff6b6b, #feca57, #48dbfb);
+            background-size: 200% 200%;
+            animation: gradient 3s ease infinite;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .features {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: #333;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 40px 30px;
+            background: linear-gradient(135deg, #fff5f5 0%, #fff9e6 100%);
+            border-radius: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(255, 107, 107, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            color: #ff6b6b;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .products {
+            padding: 80px 0;
+            background: #fff8f0;
+        }
+
+        .products h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: #333;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(255, 107, 107, 0.3);
+        }
+
+        .product-image {
+            height: 300px;
+            background: linear-gradient(135deg, #ff6b6b 0%, #feca57 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image::after {
+            content: 'NEW';
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #ff6b6b;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .product-info {
+            padding: 30px;
+        }
+
+        .product-category {
+            color: #ff6b6b;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .product-info h3 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 1.4rem;
+        }
+
+        .product-info p {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .product-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .price {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #ff6b6b;
+        }
+
+        .original-price {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 1.1rem;
+            margin-left: 10px;
+        }
+
+        .discount {
+            background: #ff6b6b;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .cta-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #ff6b6b 0%, #feca57 100%);
+            text-align: center;
+            color: white;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 20px 50px;
+            background: white;
+            color: #ff6b6b;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        footer p {
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.2rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+            .features h2,
+            .products h2,
+            .cta-section h2 {
+                font-size: 1.8rem;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="promo-banner">
+        🌞 여름 한정 특별 할인! 최대 50% OFF + 무료배송 🌞
+    </div>
+
+    <header>
+        <div class="container">
+            <h1>2024 여름 신상품 컬렉션</h1>
+            <p>시원하고 스타일리시한 여름을 위한 완벽한 선택</p>
+        </div>
+    </header>
+
+    <section class="features">
+        <div class="container">
+            <h2>왜 우리 의류인가요?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">❄️</div>
+                    <h3>쿨링 기술</h3>
+                    <p>최신 쿨링 소재로 더위를 쫓아내는 시원한 착용감</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌿</div>
+                    <h3>친환경 소재</h3>
+                    <p>환경을 생각하는 지속 가능한 패션</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">✨</div>
+                    <h3>프리미엄 퀄리티</h3>
+                    <p>엄선된 소재와 꼼꼼한 마감으로 완성된 고품질</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="products">
+        <div class="container">
+            <h2>인기 신상품</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image">👕</div>
+                    <div class="product-info">
+                        <div class="product-category">티셔츠</div>
+                        <h3>쿨링 오버핏 티셔츠</h3>
+                        <p>땀을 빠르게 흡수하는 쿨링 원단으로 여름에 완벽한 오버핏 티셔츠</p>
+                        <div class="product-price">
+                            <div>
+                                <span class="price">₩29,000</span>
+                                <span class="original-price">₩58,000</span>
+                            </div>
+                            <span class="discount">50%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">👖</div>
+                    <div class="product-info">
+                        <div class="product-category">바지</div>
+                        <h3>린넨 래깅 팬츠</h3>
+                        <p>통기성 좋은 린넨 소재로 시원하고 편안한 여름 팬츠</p>
+                        <div class="product-price">
+                            <div>
+                                <span class="price">₩45,000</span>
+                                <span class="original-price">₩75,000</span>
+                            </div>
+                            <span class="discount">40%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">👗</div>
+                    <div class="product-info">
+                        <div class="product-category">원피스</div>
+                        <h3>플로럴 미디 원피스</h3>
+                        <p>여름의 정취를 담은 플로럴 패턴의 여성용 미디 원피스</p>
+                        <div class="product-price">
+                            <div>
+                                <span class="price">₩59,000</span>
+                                <span class="original-price">₩99,000</span>
+                            </div>
+                            <span class="discount">40%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">🧢</div>
+                    <div class="product-info">
+                        <div class="product-category">악세서리</div>
+                        <h3>UV 써니 캡</h3>
+                        <p>자외선 차단 기능이 있는 시원한 여름 캡</p>
+                        <div class="product-price">
+                            <div>
+                                <span class="price">₩19,000</span>
+                                <span class="original-price">₩32,000</span>
+                            </div>
+                            <span class="discount">40%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">🩳</div>
+                    <div class="product-info">
+                        <div class="product-category">숏츠</div>
+                        <h3>스트레치 숏츠</h3>
+                        <p>활동성이 뛰어난 스트레치 소재의 다용도 숏츠</p>
+                        <div class="product-price">
+                            <div>
+                                <span class="price">₩35,000</span>
+                                <span class="original-price">₩59,000</span>
+                            </div>
+                            <span class="discount">40%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">👟</div>
+                    <div class="product-info">
+                        <div class="product-category">신발</div>
+                        <h3>메쉬 러닝 슈즈</h3>
+                        <p>통기성 좋은 메쉬 소재로 시원한 여름 러닝 슈즈</p>
+                        <div class="product-price">
+                            <div>
+                                <span class="price">₩79,000</span>
+                                <span class="original-price">₩129,000</span>
+                            </div>
+                            <span class="discount">40%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>지금 바로 쇼핑하세요!</h2>
+            <p>한정 수량, 조기 품절 예정</p>
+            <a href="#" class="cta-button">쇼핑하기</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© 2024 Summer Fashion Collection. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
